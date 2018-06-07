@@ -1,4 +1,14 @@
 class BetsController < ApplicationController
+  before_action :current_user_must_be_bet_bet_starter, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_bet_bet_starter
+    bet = Bet.find(params[:id])
+
+    unless current_user == bet.bet_starter
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @bets = Bet.all
 
