@@ -45,14 +45,8 @@
         <input type="text" id="value" name="value" placeholder="Value" class="form-control" value="<%= @bet.value %>">
       </div>
 
-      <!-- Label and input for owner -->
-      <div class="form-group">
-        <label for="owner" class="control-label">
-          Owner
-        </label>
-
-        <%= select_tag(:owner, options_from_collection_for_select(User.all, :id, :email, @bet.owner), :class => "form-control") %>
-      </div>
+      
+      
 
       <button class="btn btn-warning">
         Update Bet
