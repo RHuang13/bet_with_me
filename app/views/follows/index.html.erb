@@ -16,8 +16,20 @@
 
       <% @follows.each do |follow| %>
       <tr>
-        <td><%= follow.participant.email %></td>
-        <td><%= follow.single_bet.name %></td>
+        <td>
+          <% if follow.participant.present? %>
+            <a href="/users/<%= follow.participant.id %>">
+              <%= follow.participant.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if follow.single_bet.present? %>
+            <a href="/bets/<%= follow.single_bet.id %>">
+              <%= follow.single_bet.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/follows/<%= follow.id %>" class="btn btn-primary">Show</a>
           

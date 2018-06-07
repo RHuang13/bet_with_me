@@ -15,7 +15,13 @@
       <dd><%= @bet.value %></dd>
 
       <dt>Owner</dt>
-      <dd><%= @bet.owner %></dd>
+      <dd>
+        <% if @bet.bet_starter.present? %>
+          <a href="/users/<%= @bet.owner %>">
+            <%= @bet.bet_starter.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

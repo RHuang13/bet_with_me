@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Participants</dt>
-      <dd><%= @follow.participants %></dd>
+      <dd>
+        <% if @follow.participant.present? %>
+          <a href="/users/<%= @follow.participants %>">
+            <%= @follow.participant.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Bet</dt>
-      <dd><%= @follow.bet %></dd>
+      <dd>
+        <% if @follow.single_bet.present? %>
+          <a href="/bets/<%= @follow.bet %>">
+            <%= @follow.single_bet.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
