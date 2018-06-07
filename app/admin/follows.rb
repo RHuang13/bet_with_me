@@ -1,6 +1,6 @@
 ActiveAdmin.register Follow do
 
- permit_params :participants, :bet
+ permit_params :participants, :bet, :bet_choice
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

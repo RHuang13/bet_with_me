@@ -11,13 +11,14 @@ class BetsController < ApplicationController
 
   def index
     @q = Bet.ransack(params[:q])
-    @bets = @q.result(:distinct => true).includes(:bet_starter, :follows).page(params[:page]).per(10)
+    @bets = @q.result(:distinct => true).includes(:bet_starter, :choices, :follows).page(params[:page]).per(10)
 
     render("bets/index.html.erb")
   end
 
   def show
     @follow = Follow.new
+    @choice = Choice.new
     @bet = Bet.find(params[:id])
 
     render("bets/show.html.erb")
@@ -34,8 +35,9 @@ class BetsController < ApplicationController
 
     @bet.name = params[:name]
     @bet.description = params[:description]
-    @bet.value = params[:value]
+    @bet.bet_size = params[:bet_size]
     @bet.owner = params[:owner]
+    @bet.result = params[:result]
 
     save_status = @bet.save
 
@@ -64,8 +66,9 @@ class BetsController < ApplicationController
 
     @bet.name = params[:name]
     @bet.description = params[:description]
-    @bet.value = params[:value]
+    @bet.bet_size = params[:bet_size]
     @bet.owner = params[:owner]
+    @bet.result = params[:result]
 
     save_status = @bet.save
 

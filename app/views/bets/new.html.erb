@@ -36,17 +36,26 @@
         <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @bet.description %>">
       </div>
 
-      <!-- Label and input for value -->
+      <!-- Label and input for bet_size -->
       <div class="form-group">
-        <label for="value" class="control-label">
-          Value
+        <label for="bet_size" class="control-label">
+          Bet size
         </label>
 
-        <input type="text" id="value" name="value" placeholder="Value" class="form-control" value="<%= @bet.value %>">
+        <input type="text" id="bet_size" name="bet_size" placeholder="Bet size" class="form-control" value="<%= @bet.bet_size %>">
       </div>
 
       <!-- Label and input for owner -->
       <input type="hidden" name="owner" value="<%= current_user.id %>">
+
+      <!-- Label and input for result -->
+      <div class="form-group">
+        <label for="result" class="control-label">
+          Result
+        </label>
+
+        <input type="text" id="result" name="result" placeholder="Result" class="form-control" value="<%= @bet.result %>">
+      </div>
 
       <button class="btn btn-success">
         Create Bet

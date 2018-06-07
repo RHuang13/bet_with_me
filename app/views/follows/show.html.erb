@@ -16,9 +16,18 @@
 
       <dt>Bet</dt>
       <dd>
-        <% if @follow.single_bet.present? %>
+        <% if @follow.solo_bet.present? %>
           <a href="/bets/<%= @follow.bet %>">
-            <%= @follow.single_bet.name %>
+            <%= @follow.solo_bet.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Bet choice</dt>
+      <dd>
+        <% if @follow.choice.present? %>
+          <a href="/choices/<%= @follow.bet_choice %>">
+            <%= @follow.choice.id %>
           </a>
         <% end %>
       </dd>

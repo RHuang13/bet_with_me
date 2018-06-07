@@ -4,6 +4,9 @@ class Bet < ApplicationRecord
   has_many   :follows,
              :dependent => :destroy
 
+  has_many   :choices,
+             :dependent => :destroy
+
   belongs_to :bet_starter,
              :class_name => "User",
              :foreign_key => "owner",
