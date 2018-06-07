@@ -1,6 +1,6 @@
-ActiveAdmin.register Bet do
+ActiveAdmin.register Choice do
 
- permit_params :name, :description, :bet_size, :owner, :result
+ permit_params :scenario, :bet, :winner
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

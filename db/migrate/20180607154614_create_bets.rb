@@ -3,8 +3,9 @@ class CreateBets < ActiveRecord::Migration
     create_table :bets do |t|
       t.string :name
       t.string :description
-      t.string :value
+      t.integer :bet_size
       t.integer :owner
+      t.integer :result
 
       t.timestamps
 

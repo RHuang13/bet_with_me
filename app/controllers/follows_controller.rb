@@ -11,7 +11,7 @@ class FollowsController < ApplicationController
 
   def index
     @q = Follow.ransack(params[:q])
-    @follows = @q.result(:distinct => true).includes(:participant, :single_bet).page(params[:page]).per(10)
+    @follows = @q.result(:distinct => true).includes(:participant, :solo_bet, :choice).page(params[:page]).per(10)
 
     render("follows/index.html.erb")
   end
@@ -33,6 +33,7 @@ class FollowsController < ApplicationController
 
     @follow.participants = params[:participants]
     @follow.bet = params[:bet]
+    @follow.bet_choice = params[:bet_choice]
 
     save_status = @follow.save
 
@@ -59,6 +60,7 @@ class FollowsController < ApplicationController
   def update
     @follow = Follow.find(params[:id])
     @follow.bet = params[:bet]
+    @follow.bet_choice = params[:bet_choice]
 
     save_status = @follow.save
 

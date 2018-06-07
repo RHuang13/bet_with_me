@@ -3,6 +3,7 @@ class CreateFollows < ActiveRecord::Migration
     create_table :follows do |t|
       t.integer :participants
       t.integer :bet
+      t.integer :bet_choice
 
       t.timestamps
 

@@ -11,8 +11,8 @@
       <dt>Description</dt>
       <dd><%= @bet.description %></dd>
 
-      <dt>Value</dt>
-      <dd><%= @bet.value %></dd>
+      <dt>Bet size</dt>
+      <dd><%= @bet.bet_size %></dd>
 
       <dt>Owner</dt>
       <dd>
@@ -22,6 +22,9 @@
           </a>
         <% end %>
       </dd>
+
+      <dt>Result</dt>
+      <dd><%= @bet.result %></dd>
 
     </dl>
 
@@ -38,6 +41,74 @@
         </a>
       <% end %>
     </div>
+  </div>
+</div>
+
+<!-- A Bet has many choices -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Choices
+      </li>
+
+      <% @bet.choices.each do |choice| %>
+        <li class="list-group-item">
+          <a href="/choices/<%= choice.id %>">
+            <%= choice.id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/choices/<%= choice.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/choices/<%= choice.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_choice/<%= choice.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_choice" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for scenario -->
+      <div class="form-group">
+        <label for="scenario" class="control-label">
+          Scenario
+        </label>
+
+        <textarea id="scenario" name="scenario" placeholder="Scenario" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for bet -->
+      <div class="form-group">
+        <label for="bet" class="control-label">
+          Bet
+        </label>
+
+        <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for winner -->
+      <div class="checkbox">
+        <label for="winner">
+          <input type="checkbox" id="winner" name="winner" value="1" <%= "checked" if @choice.winner %>>
+          Winner
+        </label>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Choice
+      </button>
+    </form>
+      </li>
+    </ul>
   </div>
 </div>
 
@@ -84,6 +155,15 @@
         </label>
 
         <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for bet_choice -->
+      <div class="form-group">
+        <label for="bet_choice" class="control-label">
+          Bet choice
+        </label>
+
+        <%= select_tag(:bet_choice, options_from_collection_for_select(Choice.all, :id, :id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">
