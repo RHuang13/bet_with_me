@@ -47,8 +47,6 @@ class FollowsController < ApplicationController
 
   def update
     @follow = Follow.find(params[:id])
-
-    @follow.participants = params[:participants]
     @follow.bet = params[:bet]
 
     save_status = @follow.save
