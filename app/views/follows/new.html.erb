@@ -30,6 +30,15 @@
         <%= select_tag(:bet, options_from_collection_for_select(Bet.all, :id, :name, @follow.bet), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for bet_choice -->
+      <div class="form-group">
+        <label for="bet_choice" class="control-label">
+          Bet choice
+        </label>
+
+        <%= select_tag(:bet_choice, options_from_collection_for_select(Choice.all, :id, :id, @follow.bet_choice), :class => "form-control") %>
+      </div>
+
       <button class="btn btn-success">
         Create Follow
       </button>

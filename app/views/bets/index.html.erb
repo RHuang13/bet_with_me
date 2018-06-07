@@ -14,9 +14,28 @@
   </div>
 
 <div class="form-group">
-    <%= f.label :value_cont, "Value contains" %>
-    <%= f.text_field :value_cont, :class => "form-control", :placeholder => "Value contains" %>
+  <%= f.label :result, "Result" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :result_gteq, :class => "form-control", :placeholder => "Result greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :result_lteq, :class => "form-control", :placeholder => "Result less than or equal to" %>
+    </div>
   </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :bet_size, "Bet size" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :bet_size_gteq, :class => "form-control", :placeholder => "Bet size greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :bet_size_lteq, :class => "form-control", :placeholder => "Bet size less than or equal to" %>
+    </div>
+  </div>
+</div>
 
 <div class="form-group">
     <%= f.label :description_cont, "Description contains" %>
@@ -84,8 +103,9 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Value</th>
+        <th>Bet size</th>
         <th>Owner</th>
+        <th>Result</th>
         <th>Actions</th>
       </tr>
 
@@ -93,7 +113,7 @@
       <tr>
         <td><%= bet.name %></td>
         <td><%= bet.description %></td>
-        <td><%= bet.value %></td>
+        <td><%= bet.bet_size %></td>
         <td>
           <% if bet.bet_starter.present? %>
             <a href="/users/<%= bet.bet_starter.id %>">
@@ -101,6 +121,7 @@
             </a>
           <% end %>
         </td>
+        <td><%= bet.result %></td>
         <td>
           <a href="/bets/<%= bet.id %>" class="btn btn-primary">Show</a>
           
