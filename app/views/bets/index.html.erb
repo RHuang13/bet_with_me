@@ -21,7 +21,7 @@
         <td><%= bet.name %></td>
         <td><%= bet.description %></td>
         <td><%= bet.value %></td>
-        <td><%= bet.owner %></td>
+        <td><%= bet.bet_starter.email %></td>
         <td>
           <a href="/bets/<%= bet.id %>" class="btn btn-primary">Show</a>
           <a href="/bets/<%= bet.id %>/edit" class="btn btn-warning">Edit</a>
