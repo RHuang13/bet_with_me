@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :follows,
+             :foreign_key => "participants",
+             :dependent => :destroy
+
   has_many   :bets,
              :foreign_key => "owner",
              :dependent => :nullify
